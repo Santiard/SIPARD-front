@@ -1,0 +1,49 @@
+.header{
+  position: fixed;
+  inset: 0 0 auto 0;              
+  height: var(--header-h);
+  background: var(--brand-blue);
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 20;
+}
+
+.header__title{
+  grid-column: 2;
+  color:#fff;
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: 32px;
+  margin:0;
+}
+
+.header__right{
+  grid-column: 3;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.LogoSipard{
+  width: 15%;
+}
+
+.header__badge{
+  height:44px;                     
+  display:block;
+}
+
+.div-perfil{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+}
+
+.perfil{
+  width:150px;
+ 
+}
