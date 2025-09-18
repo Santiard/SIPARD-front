@@ -1,6 +1,5 @@
 import "../styles/LoginPage.css";
 import logo from "../assets/logo.jpg";
-import AboutPage from "./AboutPage.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -9,7 +8,7 @@ export default function Login() {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        navigate("/AboutPage");
+        navigate("/dashboard");
     }
   return (
     <div>

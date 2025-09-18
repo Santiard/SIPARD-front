@@ -1,18 +1,114 @@
+/* --- Visual polish v3 (layout expansion, no top-tabs) --- */
 :root{
-  --header-h: 72px;
+  --header-h: 80px;
   --sidebar-w: 280px;
-  --brand-blue: #0e2098;
-  --sidebar-blue-1:#0f3ea7;
-  --sidebar-blue-2:#0b2f83;
 }
 
-html,body,#root{height:100%}
-body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+/* ya existe .app-shell en tu proyecto; no lo redefinimos aquí */
 
-.app-shell{
-  display:block;
-  padding-top: var(--header-h);
-  padding-left: var(--sidebar-w);
-  min-height:100%;
-  background:#fff;
+/* contenedor más ancho para aprovechar espacio */
+.container { 
+  max-width: 1440px; 
+  margin: 0 auto; 
+  padding: 20px 24px; 
 }
+
+/* grid principal: tabla amplia + panel derecho controlado */
+.split { 
+  display:grid; 
+  grid-template-columns: 1.2fr minmax(360px, 420px); 
+  gap:16px; 
+  align-items:start; 
+}
+@media (max-width:1280px){
+  .container{ max-width: 1200px; }
+  .split{ grid-template-columns: 1fr minmax(320px, 380px); }
+}
+@media (max-width:1100px){
+  .split{ grid-template-columns: 1fr; }
+}
+
+/* tarjetas */
+.card { 
+  background:#fff; 
+  border:1px solid #e5e7eb; 
+  border-radius:12px; 
+  padding:14px; 
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+}
+
+/* toolbar superior */
+.toolbar { 
+  display:flex; gap:8px; align-items:center; 
+  background:#f3f4f6; border-radius:10px; padding:10px; 
+  margin-bottom:14px; 
+}
+.toolbar input { flex:1; min-width:360px; }
+
+/* tablas más cómodas */
+.table { width:100%; border-collapse: collapse; table-layout: fixed; background:#fff; }
+.table th, .table td { word-break: normal; overflow-wrap: break-word; }
+.table thead th { position: sticky; top: 0; background: #fff; z-index: 1; }
+.table tbody tr:nth-child(odd) { background: #f9fafb; }
+
+/* anchos: id, entidad y narrativa */
+.table th:nth-child(1), .table td:nth-child(1) { width:72px; }
+.table th:nth-child(2), .table td:nth-child(2) { width: 340px; } /* más ancho para que no parta en vertical */
+.table td { word-break: normal; overflow-wrap: break-word; }
+
+/* preview narrativa: permitir más líneas (menos compresión) */
+.table td:nth-child(3) {
+  display: -webkit-box; 
+  -webkit-line-clamp: 6;             /* antes 3 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* panel derecho pegajoso */
+.case-info { position: sticky; top: 12px; }
+
+/* selección en tablas + disabled buttons (ya lo usas) */
+.table--selectable tbody tr { cursor: pointer; }
+.table--selectable tbody tr:hover { background: #eef2ff; }
+.table--selectable tbody tr[aria-selected="true"] { background: #dbeafe; outline: 2px solid #93c5fd; }
+.btn[disabled], .btn:disabled, .btn-primary[disabled], .btn-primary:disabled { opacity:.55; cursor:not-allowed; filter:grayscale(.3); }
+
+/* botones base */
+.btn { border:1px solid #cbd5e1; background:#f8fafc; padding:8px 12px; border-radius:8px; cursor:pointer; }
+.btn:hover { background:#eef2ff; border-color:#93c5fd; }
+.btn-primary { background:#2563eb; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px; }
+.btn-primary:hover { filter: brightness(1.05); }
+
+/* estados vacíos */
+.empty-state { text-align:center; color:#6b7280; padding:24px 12px; }
+
+/* --- Table scoping & column widths fix --- */
+
+/* Quita el clamp global de la 3ra columna en TODAS las tablas.
+   Ahora lo aplicamos SOLO en la tabla de casos (analizar). */
+.cases-table td:nth-child(3) {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Asegura que encabezados no se rompan letra por letra */
+.table th { white-space: nowrap; }
+
+/* Evita "partir" caracteres en celdas estándar por defecto */
+.table td { word-break: normal; overflow-wrap: break-word; }
+
+/* Grupos: anchos explícitos para que no se compriman */
+.groups-table th:nth-child(1), .groups-table td:nth-child(1) { width: 72px; }      /* ID */
+.groups-table th:nth-child(2), .groups-table td:nth-child(2) { width: auto; }      /* Nombre (crece) */
+.groups-table th:nth-child(3), .groups-table td:nth-child(3) { width: 120px; text-align: right; } /* Casos */
+.groups-table th:nth-child(4), .groups-table td:nth-child(4) { width: 200px; }     /* Fecha */
+
+/* Asegura distribución estable en layout fixed */
+.groups-table { table-layout: fixed; }
+.cases-table  { table-layout: fixed; }
+
+/* Cases table explicit widths */
+.cases-table th:nth-child(1), .cases-table td:nth-child(1) { width: 72px; }
+.cases-table th:nth-child(2), .cases-table td:nth-child(2) { width: 360px; }

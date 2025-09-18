@@ -1,23 +1,26 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from "./pages/LoginPage.jsx";
-import AboutPage from "./pages/AboutPage.jsx";
-import './App.css'
+import './App.css';
+import './styles/web-mock.css';
+import './styles/layout.css';
 
+import Sidebar from './componets/SideBar.jsx';
+import Header from './componets/Header.jsx';
+import { Outlet } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/AboutPage" element={<AboutPage/>}/>
-      </Routes>
-    </Router>
+    <div className="app-shell">
+      {/* Header superior fijo */}
+      <Header />
+
+      {/* Cuerpo en dos columnas: sidebar + main */}
+      <div className="app-content">
+        <aside className="sidebar">
+          <Sidebar />
+        </aside>
+        <main className="app-main">
+          <Outlet />
+        </main>
+      </div>
+    </div>
   );
 }
-
-export default App
-
-

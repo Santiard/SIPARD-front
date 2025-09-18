@@ -1,49 +1,16 @@
+/* Header — franja superior azul */
 .header{
-  position: fixed;
-  inset: 0 0 auto 0;              
-  height: var(--header-h);
-  background: var(--brand-blue);
-  display: grid;
-  grid-template-columns: var(--sidebar-w) 1fr auto;
+  height: 64px;
+  background: #0b3b91;
+  color: #fff;
+  display: flex;
   align-items: center;
-  gap: 16px;
   padding: 0 20px;
-  box-sizing: border-box;
-  z-index: 20;
+  border-bottom: 4px solid #183d90;
+  gap: 16px;
+  justify-content: space-between;
 }
-
-.header__title{
-  grid-column: 2;
-  color:#fff;
-  font-weight: 800;
-  letter-spacing: .5px;
-  font-size: 32px;
-  margin:0;
-}
-
-.header__right{
-  grid-column: 3;
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.LogoSipard{
-  width: 15%;
-}
-
-.header__badge{
-  height:44px;                     
-  display:block;
-}
-
-.div-perfil{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#fff;
-}
-
-.perfil{
-  width:150px;
- 
-}
+.perfil{ width: 48px; height: 48px; border-radius: 4px; object-fit: contain; background:#fff; padding: 4px; }
+.header__title{ font-size: 28px; font-weight: 800; letter-spacing: .5px; margin: 0; }
+.header__right{ display: flex; align-items: center; gap: 12px; }
+.header__badge{ width: 32px; height: 32px; border-radius: 4px; object-fit: contain; background:#fff; padding: 4px; }

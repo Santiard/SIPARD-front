@@ -1,0 +1,43 @@
+/* --- App shell grid, sidebar width clamp, and watermark off --- */
+.app-shell{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 300px minmax(0, 1fr); /* Sidebar fijo + contenido fluido */
+  min-height: 100vh;
+}
+
+/* Header ocupa toda la fila superior */
+.header{ grid-column: 1 / -1; position: sticky; top: 0; z-index: 40; }
+
+/* Hijos del shell participan directamente en el grid */
+.app-content{ display: contents; }
+
+/* Sidebar: ANCHO FIJO, sin invadir el contenido */
+.app-shell > .sidebar{
+  grid-column: 1;
+  width: 300px; min-width: 300px; max-width: 300px;
+  align-self: start;
+  z-index: 1;
+  position: sticky; top: 64px;          /* debajo del header (≈72px) */
+  height: calc(100vh - 64px);
+  z-index: 30;
+}
+
+/* Contenido: permite que las tablas se ajusten sin overflow raro */
+.app-main{
+  position: relative;
+  z-index: 2;
+  grid-column: 2;
+  min-width: 0;           /* clave para que los hijos flex/tabla no crezcan más del contenedor */
+  overflow: auto;
+  background: #f6f8fb;
+}
+
+/* Desactiva cualquier marca de agua previa (flecha) */
+.app-shell::after,
+.app-main::after,
+.sidebar::after,
+body::after{
+  content: none !important;
+  display: none !important;
+}
