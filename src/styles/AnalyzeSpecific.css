@@ -69,7 +69,7 @@
 .as-btn {
   color: aliceblue;
   border: 1px solid #cbd5e1;
-  background: #183d90;
+  background: #08539f;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -79,7 +79,7 @@
   margin-top: 3rem;
   color: aliceblue;
   border: 1px solid #cbd5e1;
-  background: #183d90;
+  background: #08539f;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -90,7 +90,7 @@
 
 .as-btn:hover { background:#08225e;; border-color:#93c5fd; }
 .as-btn-primary {
-  background:#183d90;; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
+  background:#08539f; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
 }
 .as-btn-primary:hover { filter: brightness(1.05); }
 

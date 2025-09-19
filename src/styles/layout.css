@@ -145,7 +145,7 @@
 /* botones base */
 .btn { border:1px solid #cbd5e1; background:#f8fafc; padding:8px 12px; border-radius:8px; cursor:pointer; }
 .btn:hover { background:#eef2ff; border-color:#93c5fd; }
-.btn-primary { background:#2563eb; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px; }
+.btn-primary { background:#08539f; color:#fff; border:1px solid #08539f;; border-radius:8px; padding:8px 12px; }
 .btn-primary:hover { filter: brightness(1.05); }
 
 /* estados vacíos */

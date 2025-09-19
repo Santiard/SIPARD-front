@@ -43,7 +43,7 @@ export default function AnalyzeEspecific(){
       <div className="as-section" style={{display:'grid', gridTemplateColumns:'1fr 2fr', gap:16}}>
         <div className="as-card1">
           <h4>Conceptos Clave Extraídos</h4>
-          <textarea placeholder="Aquí se mostrarán los conceptos clave extraídos..." />
+          <textarea className="placeholder"placeholder="Aquí se mostrarán los conceptos clave extraídos..." />
           <div className="as-row"><button className="as-btn">Copiar Conceptos</button></div>
         </div>
 

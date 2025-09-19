@@ -1,12 +1,12 @@
 /* Header — franja superior azul */
 .header{
   height: 64px;
-  background: #0b3b91;
+  background: #08539f;
   color: #fff;
   display: flex;
   align-items: center;
   padding: 0 20px;
-  border-bottom: 4px solid #183d90;
+  border-bottom: 4px solid #08539f;
   gap: 16px;
   justify-content: space-between;
 }
@@ -38,6 +38,11 @@
 /* Logo (izquierda) más compacto */
 .perfil{ width: 36px; height: 36px; }
 .header__badge{ width: 28px; height: 28px; }
+
+.logo{
+  width: 13%;
+  margin-left: 83%;
+}
 
 /* === Padding to avoid right-edge flush in header === */
 .header{ padding-right: 28px; }
