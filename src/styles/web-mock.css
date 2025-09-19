@@ -31,6 +31,8 @@
   min-width: 0;           /* clave para que los hijos flex/tabla no crezcan más del contenedor */
   overflow: auto;
   background: #f6f8fb;
+  font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;  line-height: 1.5;
+
 }
 
 /* Desactiva cualquier marca de agua previa (flecha) */

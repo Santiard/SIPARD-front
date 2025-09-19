@@ -1,5 +1,6 @@
 /* --- Visual polish v3 (layout expansion, no top-tabs) --- */
 :root{
+    font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;  line-height: 1.5;
   --header-h: 80px;
   --sidebar-w: 280px;
 }
@@ -62,6 +63,7 @@
 /* contenedor más ancho para aprovechar espacio */
 .container {
   /* lo que ya tienes… */
+  font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;  line-height: 1.5;
   max-width: 1440px;
   margin: 0 auto;
   padding: 12px 20px;        /* ⬅️ reduce un poco el padding vertical */
@@ -89,7 +91,8 @@
 }
 
 /* tarjetas */
-.card { 
+.card {
+  font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;  line-height: 1.5;
   background:#fff; 
   border:1px solid #e5e7eb; 
   border-radius:12px; 
