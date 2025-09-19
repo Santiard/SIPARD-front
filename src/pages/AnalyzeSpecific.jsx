@@ -136,13 +136,13 @@ export default function AnalyzeEspecific(){
       </div>
 
       <div className="as-section" style={{display:'grid', gridTemplateColumns:'1fr 2fr', gap:16}}>
-        <div className="as-card">
+        <div className="as-card1">
           <h4>Conceptos Clave Extraídos</h4>
           <textarea placeholder="Aquí se mostrarán los conceptos clave extraídos..." />
-          <div className="as-row"><button className="btn">Copiar Conceptos</button></div>
+          <div className="as-row"><button className="as-btn">Copiar Conceptos</button></div>
         </div>
 
-        <div className="as-card">
+        <div className="as-card2">
           <h4>Casos Similares Encontrados</h4>
           <table className="as-table">
             <thead>
@@ -168,9 +168,9 @@ export default function AnalyzeEspecific(){
               ))}
             </tbody>
           </table>
-          <div className="as-row section">
-            <button className="as-btn">Crear Grupo</button>
-            <button className="as-btn">Exportar CSV</button>
+          <div className="as-row-section">
+            <button className="as-btn1">Crear Grupo</button>
+            <button className="as-btn1">Exportar CSV</button>
           </div>
         
       <SipardModal open={showModal} onClose={() => setShowModal(false)} title="Caso encontrado">
