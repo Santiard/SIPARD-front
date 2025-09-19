@@ -18,12 +18,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       
       <Routes>
-        {/* Rutas públicas */}
+        
+        <Route path="/" element={<Navigate to="/login" replace />} />
+{/* Rutas públicas */}
         <Route path="/login" element={<LoginPage />} />
 
         {/* App es el layout raíz que pinta Header + Sidebar para rutas privadas */}
         <Route element={<App />}>
-          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route index element={<Navigate to="/login" replace />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/analizar" element={<AnalyzeCasesPage />} />
           <Route path="/grupos" element={<CaseGroupsPage />} />

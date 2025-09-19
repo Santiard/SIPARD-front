@@ -14,3 +14,31 @@
 .header__title{ font-size: 28px; font-weight: 800; letter-spacing: .5px; margin: 0; }
 .header__right{ display: flex; align-items: center; gap: 12px; }
 .header__badge{ width: 32px; height: 32px; border-radius: 4px; object-fit: contain; background:#fff; padding: 4px; }
+
+/* Prevent clipping for username on right */
+.header__right{ flex: 0 0 auto; max-width: 40%; overflow: hidden; }
+.header__right .div-perfil{ display:flex; align-items:center; overflow:hidden; }
+.header__right .div-perfil span{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 16ch; }
+
+/* Header layout refinements */
+.header{ display:flex; align-items:center; }
+.header__title{ flex:1 1 auto; text-align:center; }
+.header__right{ flex:0 0 auto; display:flex; align-items:center; gap:12px; overflow:visible; max-width:none; }
+.header__right .div-perfil span{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: clamp(10ch, 18vw, 24ch); }
+
+/* === Overrides: header layout & sizes === */
+.header{ justify-content: flex-start; min-width: 0; }
+.header__title{ flex: 1 1 auto; text-align: center; min-width: 0; }
+.header__right{ margin-left: auto; display:flex; align-items:center; gap:12px; min-width:0; }
+.header__right .div-perfil{ display:flex; align-items:center; min-width:0; }
+.header__right .div-perfil span{
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: clamp(10ch, 18vw, 24ch);
+}
+/* Logo (izquierda) más compacto */
+.perfil{ width: 36px; height: 36px; }
+.header__badge{ width: 28px; height: 28px; }
+
+/* === Padding to avoid right-edge flush in header === */
+.header{ padding-right: 28px; }
+.header__right{ padding-right: 8px; }

@@ -41,3 +41,17 @@ body::after{
   content: none !important;
   display: none !important;
 }
+
+/* === Patches (sidebar & header) === */
+.sidebar { display: flex; flex-direction: column; }
+.sidebar .nav-buttons { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.sidebar button, .sidebar a.btn { width: auto; display: inline-flex; }
+.sidebar .logout-area { margin-top: auto; padding-top: 8px; }
+.app-header { width: 100%; min-width: 100%; }
+
+/* Header sizing normalization */
+.app-shell { overflow-x: hidden; }
+.header, .app-header { grid-column: 1 / -1; width: 100%; max-width: 100%; }
+
+/* Force shell to fill viewport width */
+.app-shell{ width: 100%; max-width: 100%; }

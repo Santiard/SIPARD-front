@@ -3,9 +3,9 @@ import "../styles/Header.css";
 import logoSipard from "../assets/logo.jpg"; 
 import fiscalia from "../assets/1.jpg"; 
 
-export default function Header({ username = "Usuario" }) {
+export default function Header({ username = "" }) {
   return (
-    <header className="header">
+    <header className="header app-header">
       {}
       <img src={logoSipard} alt="Perfil" className="perfil" />
       <h1 className="header__title">SIPARD</h1>
@@ -13,7 +13,7 @@ export default function Header({ username = "Usuario" }) {
       <div className="header__right">
         <img className="header__badge" src={fiscalia} alt="Fiscalía General de la Nación" />
         <div className="div-perfil">
-          <span>{username}</span>
+          {username ? <span>{username}</span> : null}
           <a href="#perfil">
             
           </a>

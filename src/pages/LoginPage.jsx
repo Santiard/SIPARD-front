@@ -8,10 +8,10 @@ export default function Login() {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        navigate("/dashboard");
+        navigate("/about");
     }
   return (
-    <div>
+    <div className="login-page">
       <form className="formLogin" onSubmit={handleSubmit}>
         <div>
           <img  src={logo} alt="SIPARD APP" className="logosipard-login" />
@@ -27,7 +27,7 @@ export default function Login() {
           <input type="password" />
         </div>
 
-        <button type="submit" on>Entrar</button>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );

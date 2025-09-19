@@ -50,14 +50,19 @@ export default function Sidebar(){
         <div className="sidebar__spacer" />
 
         <div className="menu-secondary">
-          <button className="menu-btn" onClick={()=>inputRef.current?.click()}>CARGAR NUEVO UNIVERSO</button>
-          <input ref={inputRef} type="file" accept=".csv" style={{display:"none"}} onChange={handleUpload} />
+          <button className="menu-btn" onClick={()=>inputRef.current?.click()}>CARGAR UNIVERSO</button>
+          <input ref={inputRef} type="file" accept=".csv" style={{display:"none"}} onChange={handleUpload} /><div className="logout-area">{/* logout fixed bottom */}</div>
 
-          <a className="menu-logout" href="/login" title="Salir" onClick={(e)=>{e.preventDefault(); nav("/login");}}>
+        </div>
+      
+        <div className="logout-area">
+
+
+          <Link className="menu-logout" to="/login" title="Salir" onClick={(e)=>{e.preventDefault(); nav("/login");}}>
             <img className="logos" src={salir} alt="" />
             <span>Salir</span>
-          </a>
-        </div>
+          </Link>
+          </div>
       </div>
     </aside>
   );

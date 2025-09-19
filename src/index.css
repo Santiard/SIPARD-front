@@ -66,3 +66,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+/* Normalize body/root size */
+html, body, #root{ height: 100%; }
+body{ margin: 0; }
+#root{ width: 100%; max-width: 100%; overflow-x: hidden; }
