@@ -41,3 +41,43 @@
 }
 .menu-logout:hover{ background: rgba(255,255,255,.12); }
 .menu-logout .logos{ width: 18px; height: 18px; object-fit: contain; display:block; }
+
+/* === Patches (sidebar & header) === */
+.sidebar { display: flex; flex-direction: column; }
+.sidebar .nav-buttons { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.sidebar button, .sidebar a.btn { width: auto; display: inline-flex; }
+.sidebar .logout-area { margin-top: auto; padding-top: 8px; }
+.app-header { width: 100%; min-width: 100%; }
+
+/* === Layout overrides for non-full-width buttons === */
+.sidebar .menu-btn,
+.sidebar .menu-logout {
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar__menu { flex-wrap: wrap; gap: 8px; }
+.sidebar__menu .menu-btn { margin-right: 8px; }
+
+/* Equal width for sidebar buttons */
+:root{ --sidebar-button-width: 220px; }
+.sidebar .menu-btn,
+.sidebar .menu-logout{
+  width: var(--sidebar-button-width) !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar__menu{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+
+/* Push primary menu to bottom */
+.sidebar__menu{ margin-top: auto !important; }
+
+/* Strict equal width & boxing for sidebar buttons */
+:root{ --sidebar-button-width: 240px; }
+.sidebar .menu-btn,
+.sidebar .menu-logout{
+  width: var(--sidebar-button-width) !important;
+  box-sizing: border-box;
+}

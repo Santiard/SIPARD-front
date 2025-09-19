@@ -2,9 +2,10 @@ import './App.css';
 import './styles/web-mock.css';
 import './styles/layout.css';
 
-import Sidebar from './componets/SideBar.jsx';
-import Header from './componets/Header.jsx';
+import Sidebar from './components/SideBar.jsx';
+import Header from './components/Header.jsx';
 import { Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export default function App() {
   return (
