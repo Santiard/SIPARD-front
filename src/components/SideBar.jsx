@@ -44,7 +44,7 @@ export default function Sidebar(){
         <ul className="sidebar__menu">
           <li><Link className="menu-btn" to="/dashboard">REVISAR CASOS</Link></li>
           <li><Link className="menu-btn" to="/analizar">ANALIZAR CASOS</Link></li>
-          <li><Link className="menu-btn" to="/grupos">GESTIONAR REPORTES</Link></li>
+          <li><Link className="menu-btn" to="/grupos">ASOCIAR CASOS</Link></li>
         </ul>
 
         <div className="sidebar__spacer" />
