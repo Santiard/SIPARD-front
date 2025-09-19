@@ -1,0 +1,108 @@
+/* ===== Analyze Specific (aislado por prefijo as-) ===== */
+.as-card-section{
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-right: 15rem;
+    gap: 12px;  
+}
+
+.as-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Tarjetas locales */
+.as-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+}
+
+
+/* Bloque de configuración */
+.as-config h4 { margin: 0 0 8px; }
+.as-form-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 10px 12px;
+  align-items: center;
+}
+.as-row { display: flex; gap: 8px; align-items: center; }
+
+/* Controles */
+.as-input, .as-select, .as-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.as-textarea { min-height: 140px; resize: vertical; }
+
+/* Botones locales */
+.as-btn {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.as-btn:hover { background:#eef2ff; border-color:#93c5fd; }
+.as-btn-primary {
+  background:#2563eb; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
+}
+.as-btn-primary:hover { filter: brightness(1.05); }
+
+/* Layout inferior: 1/3 + 2/3 */
+.as-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+}
+@media (max-width: 900px){
+  .as-grid { grid-template-columns: 1fr; }
+  .as-form-grid { grid-template-columns: 1fr; }
+}
+
+/* Tabla local (sin tocar .table global) */
+.as-table-wrapper {
+  max-height: 60vh;
+  overflow: auto;
+  border-radius: 8px;
+}
+.as-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #fff;
+}
+.as-table th, .as-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+  word-break: normal;
+  overflow-wrap: break-word;
+  font-size: 14px;
+}
+.as-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
+  text-align: left;
+}
+.as-table tbody tr:nth-child(odd) { background: #fafafa; }
