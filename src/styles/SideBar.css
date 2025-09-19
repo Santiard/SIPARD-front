@@ -1,6 +1,6 @@
 /* Sidebar visual (deja width controlado por web-mock.css) */
 .sidebar{
-  background: linear-gradient(180deg, #0b3b91 0%, #113c8b 100%);
+  background: #08539f;
   color: #fff;
   padding: 24px 16px;
   display: flex;

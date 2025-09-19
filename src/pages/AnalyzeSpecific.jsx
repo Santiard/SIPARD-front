@@ -47,10 +47,12 @@ export default function AnalyzeEspecific(){
       <div className="as-section" style={{display:'grid', gridTemplateColumns:'1fr 2fr', gap:16}}>
         <div className="as-card" style={{display:"flex", flexDirection:"column", gap:"8px"}}>
           <h4>Conceptos Clave Extraídos</h4>
+
           <textarea className="as-textarea" placeholder="Aquí se mostrarán los conceptos clave extraídos..."></textarea>
           <div style={{textAlign:"right"}}>
             <button className="as-btn" onClick={() => setShowCopyModal(true)}>Copiar Conceptos</button>
           </div>
+
         </div>
 
         <div className="as-card">

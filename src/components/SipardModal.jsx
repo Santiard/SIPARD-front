@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+
 export default function SipardModal({ open, title = "Caso encontrado", onClose, children, confirmLabel = "Aceptar", cancelLabel = "Cancelar", footer = null }) {
+
   if (!open) return null;
 
   const overlay = (
@@ -16,6 +18,7 @@ export default function SipardModal({ open, title = "Caso encontrado", onClose, 
             <button className="sipard-btn sipard-btn-outline" onClick={onClose}>{cancelLabel}</button>
             <button className="sipard-btn sipard-btn-primary" onClick={onClose}>{confirmLabel}</button>
           </>)}
+
         </div>
       </div>
       <style>{`

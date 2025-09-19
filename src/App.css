@@ -1,7 +1,9 @@
 /* Neutraliza estilos de plantilla Vite que rompían el layout */
 #root{ 
     font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;  line-height: 1.5;
+    max-width: none; margin: 0; padding: 0; text-align: initial; 
 
-    max-width: none; margin: 0; padding: 0; text-align: initial; }
+}
 
 /* No tocamos el resto de clases de ejemplo de Vite */
+:root { }
