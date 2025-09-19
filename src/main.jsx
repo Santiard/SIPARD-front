@@ -12,6 +12,7 @@ import AnalyzeCasesPage from './pages/AnalyzeCasesPage.jsx'
 import CaseGroupsPage from './pages/CaseGroupsPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import AnalyzeEspecific  from './pages/AnalyzeSpecific.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/analizar" element={<AnalyzeCasesPage />} />
           <Route path="/grupos" element={<CaseGroupsPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/analizarespecifico" element={<AnalyzeEspecific/>}/>
           {/* alias por compatibilidad */}
           <Route path="/AboutPage" element={<AboutPage />} />
         </Route>

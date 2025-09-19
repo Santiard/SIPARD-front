@@ -1,12 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/layout.css";
 
 export default function AnalyzeCasesPage() {
+   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [caseId, setCaseId] = useState("");
-  const [limit, setLimit] = useState(10);
-  const [threshold, setThreshold] = useState(30);
-  const [llm, setLlm] = useState("Ollama (Qwen3:8b)");
   const [selectedId, setSelectedId] = useState(null);
 
   const rows = Array.from({ length: 10 }).map((_, i) => ({
@@ -16,8 +14,21 @@ export default function AnalyzeCasesPage() {
   }));
   const filtered = rows.filter(r => !search || r.noticia.toLowerCase().includes(search.toLowerCase()));
 
+  const handleClick = () => {
+    if (!selectedId) return;
+    navigate("/analizarespecifico", { state: { selectedId } });
+  };
   return (
     <div className="container">
+      <div className="card-case-info">
+          <h4>Información del Caso</h4>
+          <input value={selectedId ? `Caso seleccionado: ${selectedId}` : ""} placeholder="Seleccione un caso para ver detalles" disabled />
+          <div className="row section">
+            <button className="btn">Ver Narrativa Completa</button>
+            <button className="btn-primary" disabled={!selectedId} onClick={handleClick}>Analizar Este Caso</button>
+          </div>
+      </div>
+
 
       <div className="toolbar">
         <label>Buscar:</label>
@@ -27,6 +38,7 @@ export default function AnalyzeCasesPage() {
 
       <div className="split">
         <div className="card">
+          <div className="table-wrapper"> 
           <table className="table table--selectable cases-table">
             <colgroup>
               <col style={{width:"72px"}} />
@@ -59,80 +71,9 @@ export default function AnalyzeCasesPage() {
           </table>
         </div>
 
-        <div className="card case-info">
-          <h4>Información del Caso</h4>
-          <input value={selectedId ? `Caso seleccionado: ${selectedId}` : ""} placeholder="Seleccione un caso para ver detalles" disabled />
-          <div className="row section">
-            <button className="btn">Ver Narrativa Completa</button>
-            <button className="btn-primary" disabled={!selectedId}>Analizar Este Caso</button>
-          </div>
-        </div>
+        
       </div>
-
-      <div className="card section">
-        <h4>Configuración de Búsqueda</h4>
-        <div className="form-grid">
-          <label>Noticia Criminal:</label>
-          <div className="row">
-            <input placeholder="Ingrese el ID de la noticia criminal" value={caseId} onChange={e=>setCaseId(e.target.value)} />
-            <button className="btn">Buscar Caso</button>
-          </div>
-
-          <label>Número de resultados:</label>
-          <input type="number" min={1} value={limit} onChange={e=>setLimit(parseInt(e.target.value||"0"))} />
-
-          <label>Umbral de similitud:</label>
-          <div className="row">
-            <input type="number" min={0} max={100} value={threshold} onChange={e=>setThreshold(parseInt(e.target.value||"0"))} />
-            <select value={llm} onChange={e=>setLlm(e.target.value)}>
-              <option>Ollama (Qwen3:8b)</option>
-              <option>Ollama (Llama3.1)</option>
-            </select>
-          </div>
-        </div>
-        <button className="btn-primary">Analizar Caso</button>
       </div>
-
-      <div className="section" style={{display:'grid', gridTemplateColumns:'1fr 2fr', gap:16}}>
-        <div className="card">
-          <h4>Conceptos Clave Extraídos</h4>
-          <textarea placeholder="Aquí se mostrarán los conceptos clave extraídos..." />
-          <div className="row"><button className="btn">Copiar Conceptos</button></div>
-        </div>
-
-        <div className="card">
-          <h4>Casos Similares Encontrados</h4>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Noticia Criminal</th>
-                <th>Narrativa (Vista Previa)</th>
-                <th>Score</th>
-                <th>Conceptos</th>
-                <th>Departamento</th>
-                <th>Municipio</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Array.from({length:3}).map((_,i)=>(
-                <tr key={i}>
-                  <td>NC-{i+1}</td>
-                  <td>Resumen del caso {i+1}…</td>
-                  <td>{Math.round(80 - i*10)}%</td>
-                  <td>fraude, estafa, extorsión</td>
-                  <td>Antioquia</td>
-                  <td>Medellín</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="row section">
-            <button className="btn">Crear Grupo</button>
-            <button className="btn">Exportar CSV</button>
-          </div>
-        </div>
-      </div>
-
     </div>
   );
 }

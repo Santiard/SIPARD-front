@@ -11,7 +11,6 @@ export default function App() {
     <div className="app-shell">
       {/* Header superior fijo */}
       <Header />
-
       {/* Cuerpo en dos columnas: sidebar + main */}
       <div className="app-content">
         <aside className="sidebar">

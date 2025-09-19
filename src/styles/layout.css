@@ -3,22 +3,82 @@
   --header-h: 80px;
   --sidebar-w: 280px;
 }
+.card-case-info{
+  display: flex;
+  flex-direction: row;     /* horizontal */
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  position: sticky;        /* pegajoso como antes */
+  top: 12px;
+  align-self: start;       /* evita que estire verticalmente en grid */
+}
 
+
+.card-case-info h4{
+  margin: 0;
+  white-space: nowrap;     /* no partir en 2 líneas */
+}
+.card-case-info input{
+  flex: 1;                 /* ocupa el espacio central */
+  min-width: 160px;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f9fafb;
+}
+.card-case-info .row.section{
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;       /* botones en línea */
+}
+.card-case-info .btn,
+.card-case-info .btn-primary{
+  white-space: nowrap;     /* evita salto en los botones */
+}
+@media (max-width: 700px){
+  .card-case-info{
+    flex-wrap: wrap;       /* permite salto de línea */
+    gap: 10px 12px;
+  }
+  .card-case-info h4{
+    flex-basis: 100%;
+  }
+  .card-case-info input{
+    flex-basis: 100%;
+  }
+  .card-case-info .row.section{
+    flex-basis: 100%;
+    justify-content: flex-end; /* botones a la derecha */
+  }
+}
 /* ya existe .app-shell en tu proyecto; no lo redefinimos aquí */
 
 /* contenedor más ancho para aprovechar espacio */
-.container { 
-  max-width: 1440px; 
-  margin: 0 auto; 
-  padding: 20px 24px; 
+.container {
+  /* lo que ya tienes… */
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 20px;        /* ⬅️ reduce un poco el padding vertical */
+  height: calc(100vh - var(--header-h));  /* ⬅️ altura exacta, no min-height */
+  overflow: hidden;          /* ⬅️ evita scroll en la página */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;    /* ⬅️ asegura que padding cuente dentro del height */
 }
 
 /* grid principal: tabla amplia + panel derecho controlado */
-.split { 
-  display:grid; 
-  grid-template-columns: 1.2fr minmax(360px, 420px); 
-  gap:16px; 
-  align-items:start; 
+.split {
+  display: flex;
+  flex-direction: column;
+  flex: 1;       
+  min-height: 0;  
 }
 @media (max-width:1280px){
   .container{ max-width: 1200px; }
@@ -36,12 +96,18 @@
   padding:14px; 
   box-shadow: 0 1px 2px rgba(0,0,0,.03);
 }
+.split > .card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 10px 12px;
+}
 
 /* toolbar superior */
 .toolbar { 
   display:flex; gap:8px; align-items:center; 
   background:#f3f4f6; border-radius:10px; padding:10px; 
-  margin-bottom:14px; 
 }
 .toolbar input { flex:1; min-width:360px; }
 
@@ -99,6 +165,7 @@
 /* Evita "partir" caracteres en celdas estándar por defecto */
 .table td { word-break: normal; overflow-wrap: break-word; }
 
+
 /* Grupos: anchos explícitos para que no se compriman */
 .groups-table th:nth-child(1), .groups-table td:nth-child(1) { width: 72px; }      /* ID */
 .groups-table th:nth-child(2), .groups-table td:nth-child(2) { width: auto; }      /* Nombre (crece) */
@@ -112,3 +179,12 @@
 /* Cases table explicit widths */
 .cases-table th:nth-child(1), .cases-table td:nth-child(1) { width: 72px; }
 .cases-table th:nth-child(2), .cases-table td:nth-child(2) { width: 360px; }
+
+.table-wrapper {
+  flex: 1;
+  min-height: 0;
+  height: 100%;      
+  overflow-y: auto;  
+  overflow-x: auto;
+  border-radius: 8px;
+}
