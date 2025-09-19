@@ -1,42 +1,78 @@
-/* --- App shell grid, sidebar width clamp, and watermark off --- */
+/* --- App shell grid + global background (except login) --- */
+:root{
+  /* opacidad del velo blanco sobre la imagen (muy opaco) */
+  --bg-overlay-opacity: 0.92;
+}
+
+/* Grid base del layout (header arriba, sidebar + main) */
 .app-shell{
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-template-columns: 300px minmax(0, 1fr); /* Sidebar fijo + contenido fluido */
+  grid-template-columns: 300px minmax(0, 1fr);
   min-height: 100vh;
+  position: relative;      /* capa de fondo */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
+/* ==== Fondo global detrás de TODA la app (NO login) ==== */
+/* El login no usa .app-shell; por eso aquí no aparece el fondo */
+.app-shell::before{
+  content: "";
+  position: fixed;                          /* anclado al viewport */
+  inset: 0;                                 /* ocupa la pantalla completa */
+  background: url("../assets/fondo.png") center / cover no-repeat;
+  z-index: 0;                               /* por debajo del contenido */
+  pointer-events: none;
+}
+/* Velo blanco muy opaco para suavizar la imagen */
+.app-shell::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, var(--bg-overlay-opacity));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Todo lo demás por encima del fondo + velo */
+.app-shell > *{ position: relative; z-index: 2; }
+
 /* Header ocupa toda la fila superior */
-.header{ grid-column: 1 / -1; position: sticky; top: 0; z-index: 40; }
+.header{ grid-column: 1 / -1; position: sticky; top: 0; z-index: 40; width: 100%; max-width: 100%; }
+.app-header { width: 100%; min-width: 100%; }
 
 /* Hijos del shell participan directamente en el grid */
 .app-content{ display: contents; }
 
-/* Sidebar: ANCHO FIJO, sin invadir el contenido */
-.app-shell > .sidebar{
-  grid-column: 1;
+/* ===== Sidebar (NO usar .app-shell > .sidebar por display:contents) ===== */
+.sidebar{
+  grid-column: 1;                             /* columna izquierda del grid */
   width: 300px; min-width: 300px; max-width: 300px;
   align-self: start;
-  z-index: 1;
-  position: sticky; top: 64px;          /* debajo del header (≈72px) */
+  position: sticky; top: 64px;                /* ajusta si tu header mide distinto */
   height: calc(100vh - 64px);
   z-index: 30;
+  /* Mantenerlo opaco para que NO se vea la foto */
+  background: linear-gradient(180deg, #0b3b91 0%, #0a2f7a 100%) !important;
+  background-clip: padding-box;
+  overflow: hidden;
 }
 
-/* Contenido: permite que las tablas se ajusten sin overflow raro */
+/* Contenido principal: transparente para revelar el fondo detrás */
 .app-main{
   position: relative;
   z-index: 2;
   grid-column: 2;
-  min-width: 0;           /* clave para que los hijos flex/tabla no crezcan más del contenedor */
+  min-width: 0;              /* evita overflow de tablas/flex */
   overflow: auto;
-  background: #f6f8fb;
-  font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;  line-height: 1.5;
-
+  background: transparent !important;   /* clave: muestra la imagen (con velo) */
+  font-family: Montserrat, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 }
 
-/* Desactiva cualquier marca de agua previa (flecha) */
-.app-shell::after,
+/* Desactiva marcas de agua previas (no tocamos .app-shell::after) */
 .app-main::after,
 .sidebar::after,
 body::after{
@@ -44,16 +80,76 @@ body::after{
   display: none !important;
 }
 
-/* === Patches (sidebar & header) === */
+/* Utilidades sidebar (si ya las usas) */
 .sidebar { display: flex; flex-direction: column; }
 .sidebar .nav-buttons { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .sidebar button, .sidebar a.btn { width: auto; display: inline-flex; }
 .sidebar .logout-area { margin-top: auto; padding-top: 8px; }
-.app-header { width: 100%; min-width: 100%; }
 
-/* Header sizing normalization */
-.app-shell { overflow-x: hidden; }
+/* Normalización extra */
 .header, .app-header { grid-column: 1 / -1; width: 100%; max-width: 100%; }
+/* ==== FIX: evitar “corrimiento” del contenido junto al sidebar ==== */
 
-/* Force shell to fill viewport width */
-.app-shell{ width: 100%; max-width: 100%; }
+/* Asegura que el main ocupe la segunda columna y no agregue offset raro */
+.app-main{
+  grid-column: 2 / -1;
+  padding-left: 24px;            /* separación cómoda respecto al sidebar */
+  padding-right: 24px;           /* margen simétrico */
+}
+
+/* El contenedor NO se centra con auto; arranca pegado al main */
+.app-main > .container{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;    /* deja que respire a lo ancho del main */
+}
+
+/* Si quieres limitar el ancho pero SIN centrarlo, usa este clamp */
+@media (min-width: 1200px){
+  .app-main > .container{
+    max-width: 1200px !important;   /* opcional */
+  }
+}
+
+/* La tabla/listas no deben provocar desplazamientos horizontales */
+.table-wrapper,
+.app-main{
+  overflow-x: hidden;  /* evita scroll horizontal por 100vw/anchos extremos */
+}
+
+/* Sidebar se mantiene opaco (que no se vea el fondo) */
+.sidebar{
+  background: linear-gradient(180deg, #0b3b91 0%, #0a2f7a 100%) !important;
+}
+
+/* (Opcional) usa la altura real del header para el sticky del sidebar */
+:root{ --header-h: 80px; } /* ajusta si tu header mide distinto */
+.sidebar{ top: var(--header-h); height: calc(100vh - var(--header-h)); }
+/* === Header debe abarcar ambas columnas del grid === */
+.app-shell > header,
+.app-shell > .header,
+.app-shell > .app-header {
+  grid-column: 1 / -1 !important;  /* cubre sidebar + main */
+  width: 100% !important;
+  max-width: none !important;
+  left: 0;
+  position: sticky;   /* si ya lo usas, se mantiene */
+  top: 0;
+  z-index: 40;        /* por encima del overlay y el contenido */
+}
+
+/* === Fondo: bájale la opacidad al velo para que se vea más la imagen === */
+/* Si ya tenías la variable, solo actualiza el valor; si no, esto la define. */
+:root{
+  --bg-overlay-opacity: 0.82;  /* antes 0.92: ahora más transparente */
+}
+
+/* Asegura que el overlay use la variable (si no lo tienes aún, añade/ajusta): */
+.app-shell::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, var(--bg-overlay-opacity));
+  z-index: 1;
+  pointer-events: none;
+}
