@@ -1,6 +1,5 @@
 /* ===== Analyze Specific (aislado por prefijo as-) ===== */
 .as-card-section{
-  
     padding-left: 2rem;
     padding-bottom: 1rem;
     background: #fff;
@@ -11,7 +10,6 @@
     margin-bottom: 0.5rem;
     padding-right: 15rem;
     gap: 12px;  
-    border-radius: 15px;
 }
 
 .as-page {
@@ -24,21 +22,12 @@
 }
 
 /* Tarjetas locales */
-.as-card1 {
+.as-card {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 14px;
   box-shadow: 0 1px 2px rgba(0,0,0,.03);
-  margin-left: 1rem;
-}
-.as-card2 {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.03);
-  padding-right: 30px;
-  margin-right: 15px;
 }
 
 
@@ -50,8 +39,7 @@
   gap: 10px 12px;
   align-items: center;
 }
-.as-row{ display: flex; gap: 8px; align-items: center; }
-
+.as-row { display: flex; gap: 8px; align-items: center; }
 
 /* Controles */
 .as-input, .as-select, .as-textarea {
@@ -67,9 +55,9 @@
 
 /* Botones locales */
 .as-btn {
-  color: aliceblue;
   border: 1px solid #cbd5e1;
-  background: #08539f;
+: #f8fafc;
+
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -91,6 +79,11 @@
 .as-btn:hover { background:#08225e;; border-color:#93c5fd; }
 .as-btn-primary {
   background:#08539f; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
+=======
+.as-btn:hover { background:#eef2ff; border-color:#93c5fd; }
+.as-btn-primary {
+  background:#2563eb; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
+
 }
 .as-btn-primary:hover { filter: brightness(1.05); }
 
@@ -133,20 +126,116 @@
   text-align: left;
 }
 .as-table tbody tr:nth-child(odd) { background: #fafafa; }
+
+
+/* === Layout para sección inferior (Conceptos + Casos) === */
+.as-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  margin: 0 1rem 1rem;
+}
+@media (max-width: 1024px) {
+  .as-section { grid-template-columns: 1fr; }
+}
+.as-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+.as-card h4 { margin: 0 0 10px; }
+
+/* Textarea de Conceptos */
+.as-textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #fff;
+}
+.as-card .actions-right { text-align: right; }
+
+
+/* === Extra merged styles === */
+/* ===== Analyze Specific (aislado por prefijo as-) ===== */
+.as-card-section{
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-right: 15rem;
+    gap: 12px;  
+    border-radius: 15px;
+}
+
+.as-card1 {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  margin-left: 1rem;
+}
+.as-card2 {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  padding-right: 30px;
+  margin-right: 15px;
+}
+
+/* Botones locales actualizados */
+.as-btn {
+  color: aliceblue;
+  border: 1px solid #cbd5e1;
+  background: #08539f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.as-btn:hover { background:#08225e; border-color:#93c5fd; }
+
+.as-btn1 {
+  margin-top: 3rem;
+  color: aliceblue;
+  border: 1px solid #cbd5e1;
+  background: #08539f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.as-btn1:hover { background:#08225e; border-color:#93c5fd; }
+
+.as-btn-primary {
+  background:#08539f; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
+}
+.as-btn-primary:hover { background:#08225e; border-color:#93c5fd; filter: brightness(1.05); }
+
 .as-row-section{
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;          /* espacio entre botones */
-  justify-content: flex-end;  /* o flex-start / space-between según prefieras */
+  gap: 12px;
+  justify-content: flex-end;
   margin-top: 12px;
-  flex-wrap: wrap;    /* permite bajar en pantallas pequeñas; quítalo si no quieres wrap */
+  flex-wrap: wrap;
 }
 .as-row-section .as-btn1,
 .as-row-section .as-btn{
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
+/* Textarea refinado */
 textarea.placeholder {
   width: 100%;
   min-height: 140px;
@@ -158,31 +247,131 @@ textarea.placeholder {
   background: #fff;
   color: #111827;
   box-sizing: border-box;
-  resize: vertical;              /* cambia a none si no quieres redimensionar */
+  resize: vertical;
   transition: border-color .15s, box-shadow .15s;
 }
-
-/* Placeholder del textarea */
 textarea.placeholder::placeholder {
-  color: #94a3b8;                /* gris suave */
-  opacity: 1;                    /* Firefox reduce por defecto */
-  font-style: italic;            /* opcional */
-  letter-spacing: .2px;          /* opcional */
+  color: #94a3b8;
+  opacity: 1;
+  font-style: italic;
+  letter-spacing: .2px;
 }
-
-/* Focus */
 textarea.placeholder:focus {
   outline: none;
   border-color: #93c5fd;
   box-shadow: 0 0 0 3px rgba(147, 197, 253, .35);
 }
-
-/* Cambia el placeholder cuando tiene foco (opcional) */
 textarea.placeholder:focus::placeholder {
   color: #cbd5e1;
   opacity: .6;
 }
+textarea.placeholder:placeholder-shown { border-color: #d1d5db; }
+textarea.placeholder:not(:placeholder-shown) { border-color: #94a3b8; }
 
-/* Estados según contenido (útil para estilos dinámicos) */
+
+/* ===== Merge: estilos solicitados por el usuario ===== */
+
+/* Border radius para la tarjeta principal */
+.as-card-section { border-radius: 15px; }
+
+/* Botones locales (prioridad al final del archivo) */
+.as-btn {
+  color: aliceblue;
+  border: 1px solid #cbd5e1;
+  background: #08539f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.as-btn:hover { background:#08225e; border-color:#93c5fd; }
+
+.as-btn1 {
+  margin-top: 3rem;
+  color: aliceblue;
+  border: 1px solid #cbd5e1;
+  background: #08539f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.as-btn1:hover { background:#08225e; border-color:#93c5fd; }
+
+.as-btn-primary {
+  background:#08539f; color:#fff; border:1px solid #2563eb; border-radius:8px; padding:8px 12px;
+}
+.as-btn-primary:hover { filter: brightness(1.05); background:#08225e; border-color:#93c5fd; }
+
+/* Tarjetas adicionales por si se requieren */
+.as-card1 {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  margin-left: 1rem;
+}
+.as-card2 {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  padding-right: 30px;
+  margin-right: 15px;
+}
+
+/* Grid inferior 1/3 + 2/3 y responsive */
+.as-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+}
+@media (max-width: 900px){
+  .as-grid { grid-template-columns: 1fr; }
+  .as-form-grid { grid-template-columns: 1fr; }
+}
+
+/* Fila de acciones (sección botones) */
+.as-row-section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.as-row-section .as-btn1,
+.as-row-section .as-btn{
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Textarea con placeholder mejorado */
+textarea.placeholder {
+  width: 100%;
+  min-height: 140px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #fff;
+  color: #111827;
+  box-sizing: border-box;
+  resize: vertical;
+  transition: border-color .15s, box-shadow .15s;
+}
+textarea.placeholder::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+  font-style: italic;
+  letter-spacing: .2px;
+}
+textarea.placeholder:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, .35);
+}
+textarea.placeholder:focus::placeholder { color: #cbd5e1; opacity: .6; }
 textarea.placeholder:placeholder-shown { border-color: #d1d5db; }
 textarea.placeholder:not(:placeholder-shown) { border-color: #94a3b8; }
